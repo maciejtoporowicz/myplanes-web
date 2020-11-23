@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "webworker"
+    ],
+    "noEmit": false,
+    "esModuleInterop": true
+  },
+  "files": [
+    "src/sw/firebase-messaging-sw.ts"
+  ]
+}
