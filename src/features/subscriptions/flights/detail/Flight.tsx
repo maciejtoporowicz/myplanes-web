@@ -18,21 +18,21 @@ const Flight = (props: Props) => {
 
   const dispatch = useAppDispatch();
   const history = useHistory();
-  const messaging  = useMessaging();
-  const { t } = useTranslation();
+  const messaging = useMessaging();
+  const {t} = useTranslation();
 
   const flights = useSelector(getFlightsForJob(subscriptionId))
   const updatedAt = useSelector((state: RootState) => jobsSelector.selectById(state, subscriptionId)?.updatedAt);
   const subscription = useSelector((state: RootState) => subscriptionsSelector.selectById(state, subscriptionId))
   const isSubscriptionBeingLoaded = useSelector(isLoading(subscriptionId));
-  
+
   useEffect(() => {
     dispatch(fetchFlightsData(subscriptionId));
   }, [dispatch, subscriptionId]);
 
   useEffect(() => {
     const unsubscribeFromMessaging =
-      messaging.onMessage(({ jobId } : {jobId: string}) => dispatch(fetchFlightsData(jobId)));
+      messaging.onMessage(({jobId}: { jobId: string }) => dispatch(fetchFlightsData(jobId)));
 
     return () => {
       unsubscribeFromMessaging();
@@ -59,12 +59,12 @@ const Flight = (props: Props) => {
           <table>
             <thead>
             <tr>
-              <th>{t('flightDetails.coordinates')}</th>
-              <th>{t('flightDetails.rangeNorth')}</th>
-              <th>{t('flightDetails.rangeEast')}</th>
-              <th>{t('flightDetails.rangeSouth')}</th>
-              <th>{t('flightDetails.rangeWest')}</th>
-              <th>{t('flightDetails.altitudeThreshold')}</th>
+              <th>{t('flight.coordinates')}</th>
+              <th>{t('flight.rangeNorth')}</th>
+              <th>{t('flight.rangeEast')}</th>
+              <th>{t('flight.rangeSouth')}</th>
+              <th>{t('flight.rangeWest')}</th>
+              <th>{t('flight.altitudeThreshold')}</th>
             </tr>
             <tr>
               <td>{subscription.coordinates}</td>
@@ -80,17 +80,17 @@ const Flight = (props: Props) => {
       </summary>
       {updatedAt &&
       <>
-        <h3>{t('flightDetails.lastUpdated', { lastUpdate: updatedAt.toString()})}</h3>
+        <h3>{t('flight.lastUpdated', {lastUpdate: updatedAt.toString()})}</h3>
         <table>
           <thead>
           <tr>
-            <th>{t('flightDetails.column.icao24')}</th>
-            <th>{t('flightDetails.column.callSign')}</th>
-            <th>{t('flightDetails.column.altitude')}</th>
-            <th>{t('flightDetails.column.onGround')}</th>
-            <th>{t('flightDetails.column.make')}</th>
-            <th>{t('flightDetails.column.model')}</th>
-            <th>{t('flightDetails.column.owner')}</th>
+            <th>{t('flight.column.icao24')}</th>
+            <th>{t('flight.column.callSign')}</th>
+            <th>{t('flight.column.altitude')}</th>
+            <th>{t('flight.column.onGround')}</th>
+            <th>{t('flight.column.make')}</th>
+            <th>{t('flight.column.model')}</th>
+            <th>{t('flight.column.owner')}</th>
           </tr>
           </thead>
           <tbody>

@@ -15,7 +15,7 @@ const MessagingStateContext = React.createContext<MessagingActions | undefined>(
 const setupMessaging = async (clientId: string) => {
   const messaging = await createMessaging();
 
-  await fetch(`${appConfig.apiUrl}/firebase/client/${clientId}/token`, {
+  await fetch(`${appConfig.apiUrl}/config/client/${clientId}/token`, {
     method: 'PUT', headers: {
       'Content-Type': 'application/json'
     }, body: JSON.stringify({"token": messaging.token})

@@ -2,6 +2,7 @@ const requireConfigValue = (value: string | undefined, description: string) => {
   if(value === undefined) {
     throw new Error(`No value provided for: ${description}`);
   }
+  return value;
 }
 
 export const appConfig = {
