@@ -15,30 +15,6 @@ type Props = {
   subscriptionId: string;
 }
 
-const createMaxBoundsFrom = (center: { lat: number, lng: number }, flights: Array<FlightData>): { n: number, e: number, s: number, w: number } => {
-  let minLat = center.lat;
-  let maxLat = center.lat;
-  let minLng = center.lng;
-  let maxLng = center.lng;
-
-  flights.forEach(({latitude, longitude}) => {
-    const lat = latitude?.value;
-    const lng = longitude?.value;
-
-    if (lat) {
-      minLat = Math.min(lat, minLat);
-      maxLat = Math.max(lat, maxLat);
-    }
-
-    if (lng) {
-      minLng = Math.min(lng, minLng);
-      maxLng = Math.max(lng, maxLng);
-    }
-  })
-
-  return {n: maxLat, e: maxLng, s: minLat, w: minLng}
-}
-
 const Detail = (props: Props) => {
   const {subscriptionId} = props;
 
@@ -74,8 +50,6 @@ const Detail = (props: Props) => {
   if (!subscription || !flights) {
     return <p>{noDataLabel}</p>;
   }
-
-  const mapBounds = createMaxBoundsFrom(subscription.coordinates, flights);
 
   return (
     <>
@@ -150,14 +124,6 @@ const Detail = (props: Props) => {
       </table>
       <FlightsMap
         center={subscription.coordinates}
-        neBounds={{
-          lat: mapBounds.n,
-          lng: mapBounds.e
-        }}
-        swBounds={{
-          lat: mapBounds.s,
-          lng: mapBounds.w
-        }}
         planes={
           flights
             .filter(flight => flight.longitude && flight.longitude)
