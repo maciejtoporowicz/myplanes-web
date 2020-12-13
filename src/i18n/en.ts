@@ -14,29 +14,32 @@ const en: Dictionary = {
       login: 'Log in'
     },
     notificationSettings: {
-      enable: 'Turn notifications on',
-      disable: 'Turn notifications off',
+      enable: 'Turn push notifications on',
+      disable: 'Turn push notifications off',
     },
-    flight: {
+    subscription: {
+      scannerConfig: "Scanner config",
       coordinates: 'Coordinates',
       altitudeThreshold: 'Altitude threshold',
       rangeNorth: 'Range north',
       rangeEast: 'Range east',
       rangeSouth: 'Range south',
       rangeWest: 'Range west',
-      lastUpdate: 'Last update: {{lastUpdate}}',
+      flightsAsOf: '{{numOfFlights}} flights found as of {{- lastUpdate}}',
       column: {
         icao24: 'ICAO24',
-        callSign: 'Znak wywoławczy',
-        altitude: 'Wysokość [m]',
-        onGround: 'Na ziemi?',
-        make: 'Marka',
+        callSign: 'Call sign',
+        longitude: 'Longitude',
+        latitude: 'Latitude',
+        altitude: 'Altitude [m]',
+        onGround: 'On ground?',
+        make: 'Make',
         model: 'Model',
-        owner: 'Właściciel',
+        owner: 'Owner',
       },
       noData: 'No data'
     },
-    flights: {
+    subscriptions: {
       noObservedAreas: 'No observed areas',
       observedAreas: 'Observed areas',
       areaName: 'Area name',

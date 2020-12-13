@@ -3,7 +3,13 @@ type FlightData = {
   callSign?: string;
   barometricAltitude?: {
     meters: number;
-  }
+  };
+  longitude: {
+    value: number;
+  };
+  latitude: {
+    value: number;
+  };
   onGround?: boolean;
   aircraftMake?: string;
   aircraftModel?: string;

@@ -7,7 +7,7 @@ import {subscriptionsSelector} from "../../../../redux/subscriptions/selectors";
 import {fetchFlightsData} from "../../../../redux/flights/thunks";
 import { useTranslation } from 'react-i18next';
 
-const Flights = () => {
+const List = () => {
   const routeMatch = useRouteMatch();
   const dispatch = useDispatch();
   const { t } = useTranslation();
@@ -37,17 +37,17 @@ const Flights = () => {
   }, [dispatch, messaging]);
 
   if(subscriptions.length === 0) {
-    return <p>{t('flights.noObservedAreas')}</p>
+    return <p>{t('subscriptions.noObservedAreas')}</p>
   }
 
   return (
     <>
-      <h1>{t('flights.observedAreas')}</h1>
+      <h1>{t('subscriptions.observedAreas')}</h1>
       <table>
         <thead>
         <tr>
-          <th>{t('flights.name')}</th>
-          <th>{t('flights.lastUpdate')}</th>
+          <th>{t('subscriptions.areaName')}</th>
+          <th>{t('subscriptions.lastUpdate')}</th>
         </tr>
         </thead>
         <tbody>
@@ -71,4 +71,4 @@ const Flights = () => {
   )
 }
 
-export default Flights;
+export default List;

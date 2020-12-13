@@ -15,17 +15,20 @@ export type Dictionary = {
       enable: string;
       disable: string;
     };
-    flight: {
+    subscription: {
+      scannerConfig: string;
       coordinates: string;
       rangeNorth: string;
       rangeEast: string;
       rangeSouth: string;
       rangeWest: string;
       altitudeThreshold: string;
-      lastUpdate: string,
+      flightsAsOf: string,
       column: {
         icao24: string,
         callSign: string,
+        longitude: string;
+        latitude: string;
         altitude: string,
         onGround: string,
         make: string,
@@ -34,7 +37,7 @@ export type Dictionary = {
       }
       noData: string;
     };
-    flights: {
+    subscriptions: {
       noObservedAreas: string,
       observedAreas: string,
       areaName: string,

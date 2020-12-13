@@ -1,8 +1,8 @@
 import * as React from 'react';
 import {useEffect} from 'react';
 import {RouteComponentProps, Switch, useRouteMatch, withRouter} from 'react-router-dom';
-import Flight from "./flights/detail/Flight";
-import Flights from "./flights/list/Flights";
+import Detail from "./flights/detail/Detail";
+import List from "./flights/list/List";
 import {LoadingState} from "../../redux/LoadingState";
 import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "../../redux/store";
@@ -41,11 +41,11 @@ const SubscriptionsRoutes = () => {
       <MessagingProvider>
         <Switch>
           <PrivateRoute path={`${routeMatch.url}/:id`} render={(routerParams: RouteComponentProps<{ id: string }>) => (
-            <Flight subscriptionId={routerParams.match.params.id} />
+            <Detail subscriptionId={routerParams.match.params.id} />
           )}>
           </PrivateRoute>
           <PrivateRoute path={`${routeMatch.url}`}>
-            <Flights />
+            <List />
           </PrivateRoute>
         </Switch>
       </MessagingProvider>
