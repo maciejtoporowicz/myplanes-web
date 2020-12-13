@@ -8,9 +8,35 @@ import {subscriptionsSelector} from "../../../../redux/subscriptions/selectors";
 import {getFlightsForJob, isLoading, jobsSelector} from "../../../../redux/flights/selectors";
 import {fetchFlightsData} from "../../../../redux/flights/thunks";
 import {useTranslation} from 'react-i18next';
+import FlightsMap from "./FlightsMap";
+import FlightData from "../../../../redux/flights/FlightData";
 
 type Props = {
   subscriptionId: string;
+}
+
+const createMaxBoundsFrom = (center: { lat: number, lng: number }, flights: Array<FlightData>): { n: number, e: number, s: number, w: number } => {
+  let minLat = center.lat;
+  let maxLat = center.lat;
+  let minLng = center.lng;
+  let maxLng = center.lng;
+
+  flights.forEach(({latitude, longitude}) => {
+    const lat = latitude?.value;
+    const lng = longitude?.value;
+
+    if (lat) {
+      minLat = Math.min(lat, minLat);
+      maxLat = Math.max(lat, maxLat);
+    }
+
+    if (lng) {
+      minLng = Math.min(lng, minLng);
+      maxLng = Math.max(lng, maxLng);
+    }
+  })
+
+  return {n: maxLat, e: maxLng, s: minLat, w: minLng}
 }
 
 const Detail = (props: Props) => {
@@ -49,6 +75,8 @@ const Detail = (props: Props) => {
     return <p>{noDataLabel}</p>;
   }
 
+  const mapBounds = createMaxBoundsFrom(subscription.coordinates, flights);
+
   return (
     <>
       <button onClick={() => history.goBack()}>{t('common.goBack')}</button>
@@ -69,7 +97,7 @@ const Detail = (props: Props) => {
             <th>{t('subscription.altitudeThreshold')}</th>
           </tr>
           <tr>
-            <td>{subscription.coordinates}</td>
+            <td>{`${subscription.coordinates.lat}, ${subscription.coordinates.lng}`}</td>
             <td>{subscription.boundaryOffsetNorth}</td>
             <td>{subscription.boundaryOffsetEast}</td>
             <td>{subscription.boundaryOffsetSouth}</td>
@@ -120,6 +148,29 @@ const Detail = (props: Props) => {
         ))}
         </tbody>
       </table>
+      <FlightsMap
+        center={subscription.coordinates}
+        neBounds={{
+          lat: mapBounds.n,
+          lng: mapBounds.e
+        }}
+        swBounds={{
+          lat: mapBounds.s,
+          lng: mapBounds.w
+        }}
+        planes={
+          flights
+            .filter(flight => flight.longitude && flight.longitude)
+            .map(flight => ({
+              make: flight.aircraftMake,
+              model: flight.aircraftModel,
+              owner: flight.owner,
+              callSign: flight.callSign,
+              position: {
+                lng: flight.longitude!!.value,
+                lat: flight.latitude!!.value
+              }
+            }))}/>
     </>
   )
 }

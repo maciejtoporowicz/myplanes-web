@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@firebase/messaging": "^0.7.1",
+    "@googlemaps/map-loader": "^1.0.1",
     "@reduxjs/toolkit": "^1.4.0",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
@@ -51,6 +52,7 @@
     ]
   },
   "devDependencies": {
+    "@types/googlemaps": "^3.40.5",
     "@types/i18next": "^13.0.0",
     "@types/react-i18next": "^8.1.0",
     "ts-loader": "^8.0.6",

@@ -4,10 +4,10 @@ type FlightData = {
   barometricAltitude?: {
     meters: number;
   };
-  longitude: {
+  longitude?: {
     value: number;
   };
-  latitude: {
+  latitude?: {
     value: number;
   };
   onGround?: boolean;

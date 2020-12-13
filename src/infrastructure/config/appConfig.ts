@@ -12,5 +12,6 @@ export const appConfig = {
     projectId: requireConfigValue(process.env.REACT_APP_FIREBASE_PROJECT_ID, 'firebase.projectId'),
     messagingSenderId: requireConfigValue(process.env.REACT_APP_FIREBASE_MSG_SENDER_ID, 'firebase.messagingSenderId'),
     appId: requireConfigValue(process.env.REACT_APP_FIREBASE_APP_ID, 'firebase.appId'),
-  }
+  },
+  googleMapsApiKey: requireConfigValue(process.env.REACT_APP_GOOGLE_MAPS_API_KEY, 'googleMapsApiKey')
 }

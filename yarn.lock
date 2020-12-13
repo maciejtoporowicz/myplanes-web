@@ -1362,6 +1362,18 @@
   resolved "https://nexus.idz-platform.net/repository/npm-group/@firebase/webchannel-wrapper/-/webchannel-wrapper-0.3.0.tgz#d1689566b94c25423d1fb2cb031c5c2ea4c9f939"
   integrity sha512-VniCGPIgSGNEgOkh5phb3iKmSGIzcwrccy3IomMFRWPCMiCk2y98UQNJEoDs1yIHtZMstVjYWKYxnunIGzC5UQ==
 
+"@googlemaps/loader@^0.0.8":
+  version "0.0.8"
+  resolved "https://registry.yarnpkg.com/@googlemaps/loader/-/loader-0.0.8.tgz#b0d4344e1633db97dea521264fe5ca863e1f6c90"
+  integrity sha512-0VP3ASljK25LuAbi0nPnKgC2OeBAZBxynEoxKaY+efYBx3RWFs4486O+wsLTsJOu2IC2T9ukZEKJX3Qm95eUxw==
+
+"@googlemaps/map-loader@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@googlemaps/map-loader/-/map-loader-1.0.1.tgz#df763367e254cc5f6a32303c341c7bf96a6d8109"
+  integrity sha512-AdyUgvdDIFIsnJCM74Oc5Eq7jMt0AwoRGOnWIAZFAR2lE/0nfj93Y4Gi7fBfTYu2ZhZzw+MWGujsMcCVOZCIaA==
+  dependencies:
+    "@googlemaps/loader" "^0.0.8"
+
 "@grpc/grpc-js@^1.0.0":
   version "1.1.7"
   resolved "https://nexus.idz-platform.net/repository/npm-group/@grpc/grpc-js/-/grpc-js-1.1.7.tgz#d3d71c6da95397e2d63895ccc4a05e7572f7b7e6"
@@ -1892,6 +1904,11 @@
     "@types/events" "*"
     "@types/minimatch" "*"
     "@types/node" "*"
+
+"@types/googlemaps@^3.40.5":
+  version "3.40.5"
+  resolved "https://registry.yarnpkg.com/@types/googlemaps/-/googlemaps-3.40.5.tgz#520e0e5526b295a86c493473c97c07f678ec41be"
+  integrity sha512-xYqO51dgJsZ+xgNUzYHW4zy/jII2RE0HU87bqMgggkp3nCGw/w7MYoQrUKyxIf0022XQ+iQwDua39wM30MG4MA==
 
 "@types/history@*":
   version "4.7.8"

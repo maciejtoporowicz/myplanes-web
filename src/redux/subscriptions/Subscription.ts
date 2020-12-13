@@ -1,7 +1,10 @@
 export type Subscription = {
   jobId: string;
   name: string;
-  coordinates: string;
+  coordinates: {
+    lat: number;
+    lng: number;
+  };
   boundaryOffsetNorth: string;
   boundaryOffsetEast: string;
   boundaryOffsetSouth: string;
